@@ -15,7 +15,11 @@ const routes: Routes = [
   },
   {
     path:'admin',
-    loadChildren:=>import('./admin/admin.module').then(mod=>mod.AdminModule)
+    loadChildren:()=>import('./admin/admin.module').then(mod=>mod.AdminModule)
+  },
+  {
+    path:'public',
+    loadChildren:()=>import('./public/public.module').then(mod=>mod.PublicModule)
   },
   {
     path:'',
@@ -28,8 +32,5 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
-export class AppRoutingModule { }
-function impor(arg0: string) {
-  throw new Error('Function not implemented.');
-}
+export class AppRoutingModule {}
 
