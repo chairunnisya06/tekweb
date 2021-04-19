@@ -9,18 +9,22 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 //material design
 import { MaterialDesign } from './material/material.module';
+import { ForgotComponent } from './auth/forgot/forgot.component';
+import {MatSidenavModule} from '@angular/material/sidenav';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    ForgotComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    MaterialDesign
+    MaterialDesign,
+    MatSidenavModule
   ],
   providers: [],
   bootstrap: [AppComponent]
