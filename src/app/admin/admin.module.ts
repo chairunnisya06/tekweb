@@ -5,6 +5,9 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { RouterModule, Routes } from '@angular/router';
 import { MaterialDesign } from '../material/material.module';
 import { ImagesComponent } from './images/images.component';
+import { ProductComponent } from './product/product.component';
+import { ProductDetailComponent } from './product-detail/product-detail.component';
+import { FormsModule } from '@angular/forms';
 
 
 const router: Routes = [
@@ -19,7 +22,18 @@ const router: Routes = [
       {
         path:'images',
         component:ImagesComponent
-      }
+      },
+      //pengaturan router untuk halaman product
+     {
+      path:'product',
+      component:ProductComponent
+    }, 
+    {
+      path:'',
+      pathMatch:'full',
+      redirectTo:'/admin/dashboard'
+    }
+
     ]
   }
 ]
@@ -28,12 +42,17 @@ const router: Routes = [
   declarations: [
     AdminComponent,
     DashboardComponent,
-    ImagesComponent
+    ImagesComponent,
+    ProductComponent,
+    ProductDetailComponent
   ],
+  entryComponents:[   
+  ], 
   imports: [
     CommonModule,
     RouterModule.forChild(router),
-    MaterialDesign
+    MaterialDesign,
+    FormsModule
   ]
 })
 export class AdminModule { }

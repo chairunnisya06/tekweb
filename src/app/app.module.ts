@@ -24,7 +24,7 @@ import {MatSidenavModule} from '@angular/material/sidenav';
     AppRoutingModule,
     BrowserAnimationsModule,
     MaterialDesign,
-    MatSidenavModule
+    MatSidenavModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
