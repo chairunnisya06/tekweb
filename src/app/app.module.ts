@@ -11,6 +11,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialDesign } from './material/material.module';
 import { ForgotComponent } from './auth/forgot/forgot.component';
 import {MatSidenavModule} from '@angular/material/sidenav';
+import { HttpClientModule } from '@angular/common/http'
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import {MatSidenavModule} from '@angular/material/sidenav';
     BrowserAnimationsModule,
     MaterialDesign,
     MatSidenavModule,
-  ],
+    HttpClientModule
+ ],
   providers: [],
   bootstrap: [AppComponent]
 })

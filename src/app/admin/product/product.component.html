@@ -1,4 +1,8 @@
-<mat-card>
+<div *ngIf='loading' style="height: 300px;" class="uk-flex uk-flex-center uk-flex-middle">
+    <mat-spinner></mat-spinner>
+</div>
+
+<mat-card *ngIf="!loading">
     <mat-card-header>
         <mat-card-title>{{title}}</mat-card-title>
     </mat-card-header>

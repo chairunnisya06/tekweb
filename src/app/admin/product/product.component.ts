@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { ApiService } from 'src/app/services/api.service';
 import { ProductDetailComponent } from '../product-detail/product-detail.component';
 
 @Component({
@@ -12,7 +13,8 @@ export class ProductComponent implements OnInit {
   book:any={};
   books:any=[];
   constructor(
-    public dialog:MatDialog
+    public dialog:MatDialog,
+    public api:ApiService
   ) { 
 
   }
@@ -30,28 +32,19 @@ export class ProductComponent implements OnInit {
     this.getBooks();
   }
 
+    loading: boolean = false;
     getBooks()
     {
-      //4. memperbarui koleksi books
-      this.books=[
-        {
-          title:'Angular Milik Kita',
-          author:'Kita semua',
-          publisher:'Mas Pras',
-          year:2020,
-          isbn:'8298377474',
-          price:70000
-        },
-        {
-          title:'Membuat Aplikasi Maps menggunakan Angular',
-          author:'Farid Suryanto',
-          publisher:'Sunhouse Digital',
-          year:2020,
-          isbn:'82983323455',
-          price:75000
-        }
-      ];
+      this.loading=true;
+      this.api.get('books').subscribe(result=>{
+        this.books=result;
+        this.loading=false;
+      },()=>{
+        this.loading=false;
+        alert('Ada masalah saat pengambilan data. Coba lagi');
+      })
     }
+
     productDetail(data: any,idx: number)
     {
       let dialog=this.dialog.open(ProductDetailComponent, {
@@ -68,15 +61,29 @@ export class ProductComponent implements OnInit {
         }
       })
     }
-    deleteProduct(idx: any)
-    {
-      var conf=confirm('Delete item?');
-      if(conf)
-      this.books.splice(idx,1);
-    }
+    loadingDelete: any={};
+    deleteProduct(idx: string | number)
+ {
    
+   var conf=confirm('Delete item?');
+   if(conf)
+   {
+    this.loadingDelete[idx]=true;
+     this.api.delete('books/'+this.books[idx].id).subscribe(result=>{
+       this.books.splice(idx,1);
+       this.loadingDelete[idx]=false;
+     },_error=>{
+       this.loadingDelete[idx]=false;
+       alert('Tidak dapat menghapus data');
+     });
+}
 
-  
+    
 
 }
+
+function (_id: any, _arg1: number) {
+  throw new Error('Function not implemented.');
+
+}}
 
