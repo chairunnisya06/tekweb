@@ -32,7 +32,7 @@ saveData()
      alert('Tidak dapat menyimpan data');
    });
   }else{
-  this.api.post('books/'+this.data.id,this.data).subscribe(result=>{
+  this.api.put('books/'+this.data.id,this.data).subscribe(result=>{
     this.dialogRef.close(result);
     this.loading=false;
   },_error=>{

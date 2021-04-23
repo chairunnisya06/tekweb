@@ -61,21 +61,21 @@ export class ProductComponent implements OnInit {
         }
       })
     }
-    loadingDelete: any={};
-    deleteProduct(idx: string | number)
+    loadingDelete:any={};
+ deleteProduct(idx: string | number)
  {
-   
    var conf=confirm('Delete item?');
    if(conf)
    {
-    this.loadingDelete[idx]=true;
-     this.api.delete('books/'+this.books[idx].id).subscribe(result=>{
+     this.loadingDelete[idx]=true;
+     this.api.delete('books/'+this.books[idx].id).subscribe(_result=>{
        this.books.splice(idx,1);
        this.loadingDelete[idx]=false;
      },_error=>{
-       this.loadingDelete[idx]=false;
        alert('Tidak dapat menghapus data');
+       this.loadingDelete[idx]=false;
      });
+
 }
 
     
