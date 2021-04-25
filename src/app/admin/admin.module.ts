@@ -8,6 +8,7 @@ import { ImagesComponent } from './images/images.component';
 import { ProductComponent } from './product/product.component';
 import { ProductDetailComponent } from './product-detail/product-detail.component';
 import { FormsModule } from '@angular/forms';
+import { FileUploaderComponent } from './file-uploader/file-uploader.component';
 
 
 const router: Routes = [
@@ -44,7 +45,8 @@ const router: Routes = [
     DashboardComponent,
     ImagesComponent,
     ProductComponent,
-    ProductDetailComponent
+    ProductDetailComponent,
+    FileUploaderComponent
   ],
   entryComponents:[   
   ], 
