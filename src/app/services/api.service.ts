@@ -64,4 +64,5 @@ delete(url: any)
   {
     return this.http.post(this.serverUrl+'upload/book',file);
   }
+  
 }
