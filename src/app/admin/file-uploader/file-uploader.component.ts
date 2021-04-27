@@ -39,19 +39,22 @@ if(event.target.files.length>0){
   
     });
   }
-  updateProduct(data: any )
- {
-   if(data.status == true)
-   {
-     alert('File berhasil diunggah');
-     this.dialogRef.close();
-   }else{
-     alert(data.message);
-   }
- }
-
-  
-
-
-
+  updateProduct(data: any)
+{
+if(data.status==true)
+{
+  this.updateBook(data);
+  alert('File berhasil diunggah');
+  this.loadingUpload=false;
+  this.dialogRef.close();
+}else{
+  alert(data.message);
+}
+}
+updateBook(data: any)
+{
+  this.api.put('books/'+this.dialogData.id,{url: data.url}).subscribe(res=>{
+    console.log(res);
+  })
+}
 }
