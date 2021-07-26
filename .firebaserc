@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "katalog-cake": {
+      "hosting": {
+        "Random": [
+          "katalog-cake"
+        ]
+      }
+    }
+  }
+}
